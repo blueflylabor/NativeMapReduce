@@ -5,7 +5,7 @@ using namespace std;
 namespace nmr {
 
 // Define static punctuation constant (implementation)
-    const string StringUtils::punctuations = " ,;?!.\"'()[]{}_-";
+    const string StringUtils::punctuations = ",;?!.\"'()[]{}_-";
 
 /**
  * @brief Remove punctuation implementation

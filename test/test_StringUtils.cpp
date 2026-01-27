@@ -53,7 +53,7 @@ int main() {
         cout << "[" << str << "]" << ",";
     cout << "count: " << count << "\n";
 
-    string test7 = "hello world,cpp.best language!";
+    string test7 = "hello world,cpp.the best programming language!i use cpp.";
     size_t count2 = nmr::StringUtils::splitToStringArray_(test7, " !,?/.", substr);
     for (const string& str : substr)
         cout << "[" << str << "]" << ",";
