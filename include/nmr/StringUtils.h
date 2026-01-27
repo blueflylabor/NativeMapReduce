@@ -36,8 +36,22 @@ public:
      * @return Cleaned string with no punctuation
      */
     static string removePunctuation(string str);
-    static Vector<size_t> getDelimiterLocation(const string& str, const string& delimiter);
-    static size_t splitToStringArray(const string& str, const string& delimiter, nmr::Vector<string> &out_words);
+
+    static size_t getDelimiter2Location(const string& str,
+        const string& delimiter,
+        nmr::Vector<size_t>& locations,
+        nmr::Vector<char>& delimiters);
+
+    static nmr::Vector<size_t> getDelimiterLocation(const string& str,
+        const string& delimiter);
+
+    static size_t splitToStringArray(const string& str,
+        const string& delimiter,
+        nmr::Vector<string> &out_words);
+
+    static size_t splitToStringArray_(const string& str,
+        const string& delimiter,
+        nmr::Vector<string> &out_words);
 };
 
 } // namespace nmr

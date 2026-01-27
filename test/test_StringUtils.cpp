@@ -39,16 +39,24 @@ int main() {
     cout << "Result: \"" << result4 << "\"\n";
 
     string test5 = "hello world,cpp.best language!";
-    Vector<size_t> loc = nmr::StringUtils::getDelimiterLocation(test5, " !,.");
-    for (size_t idx : loc)
-        cout << "[" << test5[idx] << "]" << ",";
+    Vector<size_t> locations;
+    Vector<char> delimiters;
+    nmr::StringUtils::getDelimiter2Location(test5, " !,.", locations, delimiters);
+    for (size_t idx : locations)
+        cout << "[" << idx << ":"<< test5[idx] << "]" << ",";
     cout << "\n";
 
     string test6 = "hello world,cpp.best language!";
     nmr::Vector<string> substr;
-    size_t count  = nmr::StringUtils::splitToStringArray(test6, " !,", substr);
+    size_t count  = nmr::StringUtils::splitToStringArray(test6, " !,?/.", substr);
     for (const string& str : substr)
         cout << "[" << str << "]" << ",";
     cout << "count: " << count << "\n";
+
+    string test7 = "hello world,cpp.best language!";
+    size_t count2 = nmr::StringUtils::splitToStringArray_(test7, " !,?/.", substr);
+    for (const string& str : substr)
+        cout << "[" << str << "]" << ",";
+    cout << "count2: " << count2 << "\n";
     return 0;
 }
