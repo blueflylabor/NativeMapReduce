@@ -15,11 +15,11 @@ foreach(TEST_FILE ${NMR_TEST_FILES})
     if(NOT TEST_FILE)
         continue()
     endif()
-    
+
     # Create test executable
     add_executable(${TEST_NAME} ${TEST_FILE}
-            ../include/nmr/Map.h)
-    
+    )
+
     # Link dependencies (pthread is optional for StringUtils test)
     target_link_libraries(${TEST_NAME}
         PRIVATE

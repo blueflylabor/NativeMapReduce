@@ -40,6 +40,7 @@ add_library(nmr_lib
             ${NMR_SOURCE_FILES}
         include/nmr/Map.h
         src/Queue.cpp
+        include/nmr/MapReduce.h
 )
 
 # Link include directories (public = exposed to users, private = internal only)
