@@ -1,0 +1,107 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-630773cf612e407efb23.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "test",
+					"jsonFile" : "directory-test-Debug-451c0598f41488bb20b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "NativeMapReduce",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "nmr_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nmr_lib-Debug-830a3d29d1bb28981be8.json",
+					"name" : "nmr_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "test_Queue::@36f028580bb02cc8272a",
+					"jsonFile" : "target-test_Queue-Debug-ef5cc2b97699b76954ca.json",
+					"name" : "test_Queue",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "test_StringUtils::@36f028580bb02cc8272a",
+					"jsonFile" : "target-test_StringUtils-Debug-3920d66bb1f4dbc939e2.json",
+					"name" : "test_StringUtils",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "test_Vector::@36f028580bb02cc8272a",
+					"jsonFile" : "target-test_Vector-Debug-5039fd0129fc50441506.json",
+					"name" : "test_Vector",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
+		"source" : "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}
