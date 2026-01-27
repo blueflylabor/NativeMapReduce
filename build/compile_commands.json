@@ -1,9 +1,21 @@
 [
 {
   "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
+  "command": "/usr/bin/clang++ -Dnmr_lib_EXPORTS -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/nmr_lib.dir/src/Map.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/Map.cpp",
+  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/Map.cpp",
+  "output": "CMakeFiles/nmr_lib.dir/src/Map.cpp.o"
+},
+{
+  "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
   "command": "/usr/bin/clang++ -Dnmr_lib_EXPORTS -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/MapReduce.cpp",
   "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/MapReduce.cpp",
   "output": "CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o"
+},
+{
+  "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
+  "command": "/usr/bin/clang++ -Dnmr_lib_EXPORTS -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/nmr_lib.dir/src/Queue.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/Queue.cpp",
+  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/Queue.cpp",
+  "output": "CMakeFiles/nmr_lib.dir/src/Queue.cpp.o"
 },
 {
   "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
@@ -19,9 +31,9 @@
 },
 {
   "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
-  "command": "/usr/bin/clang++ -Dnmr_lib_EXPORTS -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror -o CMakeFiles/nmr_lib.dir/src/map.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/map.cpp",
-  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/map.cpp",
-  "output": "CMakeFiles/nmr_lib.dir/src/map.cpp.o"
+  "command": "/usr/bin/clang++ -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror -o test/CMakeFiles/test_Queue.dir/test_Queue.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_Queue.cpp",
+  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_Queue.cpp",
+  "output": "test/CMakeFiles/test_Queue.dir/test_Queue.cpp.o"
 },
 {
   "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
@@ -31,14 +43,8 @@
 },
 {
   "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
-  "command": "/usr/bin/clang++ -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror -o test/CMakeFiles/test_queue.dir/test_queue.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_queue.cpp",
-  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_queue.cpp",
-  "output": "test/CMakeFiles/test_queue.dir/test_queue.cpp.o"
-},
-{
-  "directory": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build",
-  "command": "/usr/bin/clang++ -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror -o test/CMakeFiles/test_vector.dir/test_vector.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_vector.cpp",
-  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_vector.cpp",
-  "output": "test/CMakeFiles/test_vector.dir/test_vector.cpp.o"
+  "command": "/usr/bin/clang++ -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror -o test/CMakeFiles/test_Vector.dir/test_Vector.cpp.o -c /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_Vector.cpp",
+  "file": "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_Vector.cpp",
+  "output": "test/CMakeFiles/test_Vector.dir/test_Vector.cpp.o"
 }
 ]

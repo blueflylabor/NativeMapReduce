@@ -49,10 +49,28 @@ cmake_ninja_workdir = /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/b
 
 build cmake_object_order_depends_target_nmr_lib: phony || .
 
+build CMakeFiles/nmr_lib.dir/src/Map.cpp.o: CXX_COMPILER__nmr_lib_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/Map.cpp || cmake_object_order_depends_target_nmr_lib
+  CONFIG = Debug
+  DEFINES = -Dnmr_lib_EXPORTS
+  DEP_FILE = CMakeFiles/nmr_lib.dir/src/Map.cpp.o.d
+  FLAGS = -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror
+  INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src
+  OBJECT_DIR = CMakeFiles/nmr_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/nmr_lib.dir/src
+
 build CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o: CXX_COMPILER__nmr_lib_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/MapReduce.cpp || cmake_object_order_depends_target_nmr_lib
   CONFIG = Debug
   DEFINES = -Dnmr_lib_EXPORTS
   DEP_FILE = CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o.d
+  FLAGS = -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror
+  INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src
+  OBJECT_DIR = CMakeFiles/nmr_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/nmr_lib.dir/src
+
+build CMakeFiles/nmr_lib.dir/src/Queue.cpp.o: CXX_COMPILER__nmr_lib_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/Queue.cpp || cmake_object_order_depends_target_nmr_lib
+  CONFIG = Debug
+  DEFINES = -Dnmr_lib_EXPORTS
+  DEP_FILE = CMakeFiles/nmr_lib.dir/src/Queue.cpp.o.d
   FLAGS = -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror
   INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src
   OBJECT_DIR = CMakeFiles/nmr_lib.dir
@@ -76,15 +94,6 @@ build CMakeFiles/nmr_lib.dir/src/Vector.cpp.o: CXX_COMPILER__nmr_lib_unscanned_D
   OBJECT_DIR = CMakeFiles/nmr_lib.dir
   OBJECT_FILE_DIR = CMakeFiles/nmr_lib.dir/src
 
-build CMakeFiles/nmr_lib.dir/src/map.cpp.o: CXX_COMPILER__nmr_lib_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src/map.cpp || cmake_object_order_depends_target_nmr_lib
-  CONFIG = Debug
-  DEFINES = -Dnmr_lib_EXPORTS
-  DEP_FILE = CMakeFiles/nmr_lib.dir/src/map.cpp.o.d
-  FLAGS = -g -std=c++17 -arch arm64 -fPIC -Wall -Wextra -Wpedantic -Werror
-  INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/src
-  OBJECT_DIR = CMakeFiles/nmr_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/nmr_lib.dir/src
-
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target nmr_lib
@@ -93,7 +102,7 @@ build CMakeFiles/nmr_lib.dir/src/map.cpp.o: CXX_COMPILER__nmr_lib_unscanned_Debu
 #############################################
 # Link the shared library libnmr.1.0.0.dylib
 
-build libnmr.1.0.0.dylib: CXX_SHARED_LIBRARY_LINKER__nmr_lib_Debug CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o CMakeFiles/nmr_lib.dir/src/StringUtils.cpp.o CMakeFiles/nmr_lib.dir/src/Vector.cpp.o CMakeFiles/nmr_lib.dir/src/map.cpp.o
+build libnmr.1.0.0.dylib: CXX_SHARED_LIBRARY_LINKER__nmr_lib_Debug CMakeFiles/nmr_lib.dir/src/Map.cpp.o CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o CMakeFiles/nmr_lib.dir/src/Queue.cpp.o CMakeFiles/nmr_lib.dir/src/StringUtils.cpp.o CMakeFiles/nmr_lib.dir/src/Vector.cpp.o
   ARCH_FLAGS = -arch arm64
   CONFIG = Debug
   INSTALLNAME_DIR = @rpath/
@@ -198,6 +207,41 @@ build install/strip: phony CMakeFiles/install/strip.util
 # =============================================================================
 
 # =============================================================================
+# Object build statements for EXECUTABLE target test_Queue
+
+
+#############################################
+# Order-only phony target for test_Queue
+
+build cmake_object_order_depends_target_test_Queue: phony || cmake_object_order_depends_target_nmr_lib
+
+build test/CMakeFiles/test_Queue.dir/test_Queue.cpp.o: CXX_COMPILER__test_Queue_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_Queue.cpp || cmake_object_order_depends_target_test_Queue
+  CONFIG = Debug
+  DEP_FILE = test/CMakeFiles/test_Queue.dir/test_Queue.cpp.o.d
+  FLAGS = -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror
+  INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test
+  OBJECT_DIR = test/CMakeFiles/test_Queue.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/test_Queue.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test_Queue
+
+
+#############################################
+# Link the executable test/test_Queue
+
+build test/test_Queue: CXX_EXECUTABLE_LINKER__test_Queue_Debug test/CMakeFiles/test_Queue.dir/test_Queue.cpp.o | libnmr.1.0.0.dylib || libnmr.dylib libnmr.dylib
+  CONFIG = Debug
+  FLAGS = -g -arch arm64
+  LINK_LIBRARIES = -Wl,-rpath,/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build  libnmr.1.0.0.dylib
+  OBJECT_DIR = test/CMakeFiles/test_Queue.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test/test_Queue
+  TARGET_PDB = test_Queue.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target test_StringUtils
 
 
@@ -233,74 +277,39 @@ build test/test_StringUtils: CXX_EXECUTABLE_LINKER__test_StringUtils_Debug test/
   TARGET_PDB = test_StringUtils.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target test_queue
+# Object build statements for EXECUTABLE target test_Vector
 
 
 #############################################
-# Order-only phony target for test_queue
+# Order-only phony target for test_Vector
 
-build cmake_object_order_depends_target_test_queue: phony || cmake_object_order_depends_target_nmr_lib
+build cmake_object_order_depends_target_test_Vector: phony || cmake_object_order_depends_target_nmr_lib
 
-build test/CMakeFiles/test_queue.dir/test_queue.cpp.o: CXX_COMPILER__test_queue_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_queue.cpp || cmake_object_order_depends_target_test_queue
+build test/CMakeFiles/test_Vector.dir/test_Vector.cpp.o: CXX_COMPILER__test_Vector_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_Vector.cpp || cmake_object_order_depends_target_test_Vector
   CONFIG = Debug
-  DEP_FILE = test/CMakeFiles/test_queue.dir/test_queue.cpp.o.d
+  DEP_FILE = test/CMakeFiles/test_Vector.dir/test_Vector.cpp.o.d
   FLAGS = -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror
   INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test
-  OBJECT_DIR = test/CMakeFiles/test_queue.dir
-  OBJECT_FILE_DIR = test/CMakeFiles/test_queue.dir
+  OBJECT_DIR = test/CMakeFiles/test_Vector.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/test_Vector.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target test_queue
+# Link build statements for EXECUTABLE target test_Vector
 
 
 #############################################
-# Link the executable test/test_queue
+# Link the executable test/test_Vector
 
-build test/test_queue: CXX_EXECUTABLE_LINKER__test_queue_Debug test/CMakeFiles/test_queue.dir/test_queue.cpp.o | libnmr.1.0.0.dylib || libnmr.dylib libnmr.dylib
+build test/test_Vector: CXX_EXECUTABLE_LINKER__test_Vector_Debug test/CMakeFiles/test_Vector.dir/test_Vector.cpp.o | libnmr.1.0.0.dylib || libnmr.dylib libnmr.dylib
   CONFIG = Debug
   FLAGS = -g -arch arm64
   LINK_LIBRARIES = -Wl,-rpath,/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build  libnmr.1.0.0.dylib
-  OBJECT_DIR = test/CMakeFiles/test_queue.dir
+  OBJECT_DIR = test/CMakeFiles/test_Vector.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = test/test_queue
-  TARGET_PDB = test_queue.dbg
-
-# =============================================================================
-# Object build statements for EXECUTABLE target test_vector
-
-
-#############################################
-# Order-only phony target for test_vector
-
-build cmake_object_order_depends_target_test_vector: phony || cmake_object_order_depends_target_nmr_lib
-
-build test/CMakeFiles/test_vector.dir/test_vector.cpp.o: CXX_COMPILER__test_vector_unscanned_Debug /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test/test_vector.cpp || cmake_object_order_depends_target_test_vector
-  CONFIG = Debug
-  DEP_FILE = test/CMakeFiles/test_vector.dir/test_vector.cpp.o.d
-  FLAGS = -g -std=c++17 -arch arm64 -Wall -Wextra -Wpedantic -Werror
-  INCLUDES = -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/include -I/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/test
-  OBJECT_DIR = test/CMakeFiles/test_vector.dir
-  OBJECT_FILE_DIR = test/CMakeFiles/test_vector.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target test_vector
-
-
-#############################################
-# Link the executable test/test_vector
-
-build test/test_vector: CXX_EXECUTABLE_LINKER__test_vector_Debug test/CMakeFiles/test_vector.dir/test_vector.cpp.o | libnmr.1.0.0.dylib || libnmr.dylib libnmr.dylib
-  CONFIG = Debug
-  FLAGS = -g -arch arm64
-  LINK_LIBRARIES = -Wl,-rpath,/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build  libnmr.1.0.0.dylib
-  OBJECT_DIR = test/CMakeFiles/test_vector.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = test/test_vector
-  TARGET_PDB = test_vector.dbg
+  TARGET_FILE = test/test_Vector
+  TARGET_PDB = test_Vector.dbg
 
 
 #############################################
@@ -385,11 +394,11 @@ build test/install/strip: phony test/CMakeFiles/install/strip.util
 
 build nmr_lib: phony libnmr.dylib
 
+build test_Queue: phony test/test_Queue
+
 build test_StringUtils: phony test/test_StringUtils
 
-build test_queue: phony test/test_queue
-
-build test_vector: phony test/test_vector
+build test_Vector: phony test/test_Vector
 
 # =============================================================================
 # Folder targets.
@@ -406,7 +415,7 @@ build all: phony libnmr.dylib test/all
 #############################################
 # Folder: /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test
 
-build test/all: phony test/test_StringUtils test/test_queue test/test_vector
+build test/all: phony test/test_Queue test/test_StringUtils test/test_Vector
 
 # =============================================================================
 # Built-in targets

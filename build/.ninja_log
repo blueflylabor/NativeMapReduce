@@ -1,14 +1,14 @@
 # ninja log v6
 5	494	1769054961335049931	test/CMakeFiles/test_vector.dir/test_vector.cpp.o	d60c41296bbc6ed9
+15	428	1769423729397444441	test/CMakeFiles/test_queue.dir/test_queue.cpp.o	c316dc421af491fd
 3	500	1769054961333739708	CMakeFiles/nmr_lib.dir/src/Vector.cpp.o	b6b24e5876384e88
-13	203	1769235130836150858	CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o	5eebde28d1dcca5c
 8	413	1769316787143444877	test/CMakeFiles/test_StringUtils.dir/test_StringUtils.cpp.o	22f5b03d5fe7d374
+13	203	1769235130836150858	CMakeFiles/nmr_lib.dir/src/MapReduce.cpp.o	5eebde28d1dcca5c
 11	607	1769317009752667124	CMakeFiles/nmr_lib.dir/src/StringUtils.cpp.o	7acb9a6a33373442
 4	49	1769054961334426861	CMakeFiles/nmr_lib.dir/src/map.cpp.o	7013d395c0612972
 607	655	1769317010348247200	libnmr.1.0.0.dylib	4b33d357c15ddc4b
 655	665	1769317010396483544	libnmr.1.dylib	d7596186f9a1eca9
 655	665	1769317010396483544	libnmr.dylib	d7596186f9a1eca9
-665	760	1769317010406422200	test/test_StringUtils	36b4b5882c69013e
 665	760	1769317010406663945	test/test_vector	e171e608f8db63c2
-15	428	1769423729397444441	test/CMakeFiles/test_queue.dir/test_queue.cpp.o	c316dc421af491fd
+665	760	1769317010406422200	test/test_StringUtils	36b4b5882c69013e
 428	556	1769423729810929884	test/test_queue	1aeb20093f64079d

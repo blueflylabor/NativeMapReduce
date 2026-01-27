@@ -6,7 +6,7 @@
 	CompilerName=""
 	CompilerVersion=""
 	OSName="macOS"
-	Hostname="JeffdeMacBook-Air.local"
+	Hostname="MacBookAir"
 	OSRelease="26.2"
 	OSVersion="25C56"
 	OSPlatform="arm64"
@@ -19,49 +19,17 @@
 	ProcessorCacheSize="131072"
 	NumberOfLogicalCPU="8"
 	NumberOfPhysicalCPU="8"
-	TotalVirtualMemory="0"
+	TotalVirtualMemory="1024"
 	TotalPhysicalMemory="16384"
 	LogicalProcessorsPerPhysical="8"
 	ProcessorClockFrequency="0"
 	>
 	<Testing>
-		<StartDateTime>Jan 26 18:35 CST</StartDateTime>
-		<StartTestTime>1769423751</StartTestTime>
-		<TestList>
-			<Test>./test/test_vector</Test>
-		</TestList>
-		<Test Status="passed">
-			<Name>test_vector</Name>
-			<Path>./test</Path>
-			<FullName>./test/test_vector</FullName>
-			<FullCommandLine>/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test/test_vector</FullCommandLine>
-			<Results>
-				<NamedMeasurement type="numeric/double" name="Execution Time">
-					<Value>0.461019</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="numeric/double" name="Processors">
-					<Value>1</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Completion Status">
-					<Value>Completed</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Command Line">
-					<Value>/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test/test_vector</Value>
-				</NamedMeasurement>
-				<NamedMeasurement type="text/string" name="Environment">
-					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
-				</NamedMeasurement>
-				<Measurement>
-					<Value>Pass: Constructor from array test.
-Pass: Element access test.
-Pass: Copy constructor test.
-All tests passed!
-</Value>
-				</Measurement>
-			</Results>
-		</Test>
-		<EndDateTime>Jan 26 18:35 CST</EndDateTime>
-		<EndTestTime>1769423751</EndTestTime>
+		<StartDateTime>Jan 27 17:59 CST</StartDateTime>
+		<StartTestTime>1769507979</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jan 27 17:59 CST</EndDateTime>
+		<EndTestTime>1769507979</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>
