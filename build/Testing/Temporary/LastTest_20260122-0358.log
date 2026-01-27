@@ -1,0 +1,22 @@
+Start testing: Jan 26 18:35 CST
+----------------------------------------------------------
+3/3 Testing: test_vector
+3/3 Test: test_vector
+Command: "/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test/test_vector"
+Directory: /Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test
+"test_vector" start time: Jan 26 18:35 CST
+Output:
+----------------------------------------------------------
+Pass: Constructor from array test.
+Pass: Element access test.
+Pass: Copy constructor test.
+All tests passed!
+<end of output>
+Test time =   0.46 sec
+----------------------------------------------------------
+Test Passed.
+"test_vector" end time: Jan 26 18:35 CST
+"test_vector" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 26 18:35 CST

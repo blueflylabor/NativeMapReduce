@@ -1,0 +1,11 @@
+C++ is the best!
+C is the best!
+C is not C++.
+C++ is not C.
+C is a part of C++?
+C and C++ are the best.
+Java is not the best.
+C is not a part of Java.
+C++ is not a part of JAVA.
+C and C++ are not a part of JAVA.
+C++ and C are the best.

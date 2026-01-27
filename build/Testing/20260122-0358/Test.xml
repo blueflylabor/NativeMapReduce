@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20260122-0358-Experimental"
+	Name="(empty)"
+	Generator="ctest-4.0.2"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="macOS"
+	Hostname="JeffdeMacBook-Air.local"
+	OSRelease="26.2"
+	OSVersion="25C56"
+	OSPlatform="arm64"
+	Is64Bits="1"
+	VendorString="Apple"
+	VendorID="Apple"
+	FamilyID="0"
+	ModelID="0"
+	ModelName="Apple M1"
+	ProcessorCacheSize="131072"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="8"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="16384"
+	LogicalProcessorsPerPhysical="8"
+	ProcessorClockFrequency="0"
+	>
+	<Testing>
+		<StartDateTime>Jan 26 18:35 CST</StartDateTime>
+		<StartTestTime>1769423751</StartTestTime>
+		<TestList>
+			<Test>./test/test_vector</Test>
+		</TestList>
+		<Test Status="passed">
+			<Name>test_vector</Name>
+			<Path>./test</Path>
+			<FullName>./test/test_vector</FullName>
+			<FullCommandLine>/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test/test_vector</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.461019</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/Users/jeffwhynot/activity/CLionProjects/NativeMapReduce/build/test/test_vector</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>Pass: Constructor from array test.
+Pass: Element access test.
+Pass: Copy constructor test.
+All tests passed!
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Jan 26 18:35 CST</EndDateTime>
+		<EndTestTime>1769423751</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
