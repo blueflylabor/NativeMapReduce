@@ -37,7 +37,7 @@ public:
      */
     static string removePunctuation(string str);
     static Vector<size_t> getDelimiterLocation(const string& str, const string& delimiter);
-    static size_t splitToStringArray(const string& str, const string& delimiter, string*&out_words);
+    static size_t splitToStringArray(const string& str, const string& delimiter, nmr::Vector<string> &out_words);
 };
 
 } // namespace nmr

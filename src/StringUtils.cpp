@@ -40,80 +40,43 @@ string StringUtils::removePunctuation(string str) {
     return result;
 }
 
-    Vector<size_t> StringUtils::getDelimiterLocation(const std::string& s, const std::string& delimiter) {
-    Vector<size_t> loc; // 指定模板类型 size_t
+    nmr::Vector<size_t> StringUtils::getDelimiterLocation(const std::string& s, const std::string& delimiter) {
+    nmr::Vector<size_t> loc;
     const size_t delimiter_len = delimiter.length();
     const size_t s_len = s.length();
 
-    // 边缘场景1：分隔符为空 → 返回空向量
-    if (delimiter_len == 0) {
-        std::cerr << "[StringUtils Warning] Delimiter is empty - return empty location list" << std::endl;
+    if (delimiter_len == 0 || s_len == 0)
         return loc;
-    }
 
-    // 边缘场景2：字符串为空 → 返回空向量
-    if (s_len == 0) {
-        return loc;
-    }
-
-    // 遍历字符串（i 最大为 s_len - delimiter_len，避免越界）
-    for (size_t i = 0; i <= s_len - delimiter_len; ++i) {
-        bool is_match = true;
-
-        // 验证完整分隔符匹配
+    for (size_t i = 0; i < s_len; i++) {
+        char str = s[i];
+        bool isPunct = false;
         for (size_t j = 0; j < delimiter_len; ++j) {
-            if (s[i + j] != delimiter[j]) {
-                is_match = false;
+            if (str == delimiter[j]){
+                isPunct = true;
                 break;
             }
         }
-
-        // 匹配成功：记录位置 + 跳过已匹配的字符（避免重复）
-        if (is_match) {
+        if (isPunct)
             loc.push_back(i);
-            i += delimiter_len - 1; // 比如分隔符长度3，i 直接+2，下次从i+3开始
-        }
     }
-
     return loc;
 }
 
-size_t StringUtils::splitToStringArray(const string& str, 
-                                       const string& delimiter,
-                                       string*& out_words){
-        string clean_str = removePunctuation(str);
-        string s = clean_str;
-        size_t count = 0;
-        size_t delimiter_len = delimiter.length();
-        size_t start = 0;
-        for (size_t i = 0; i <= s.length(); i++) {
-            bool is_delimiter = false;
-            if (i + delimiter_len <= s.length()) {
-                is_delimiter = true;
-                for (size_t j = 0; j < delimiter_len; j++) {
-                    if (s[i + j] != delimiter[j]) {
-                        is_delimiter = false;
-                        break;
-                    }
-                }
+size_t StringUtils::splitToStringArray(const string& str, const string& delimiter, nmr::Vector<string> &out_words){
+    string substr;
+    size_t start = 0;
+    nmr::Vector<size_t> loc = getDelimiterLocation(str, delimiter);
+    size_t count = loc.getSize() + 1;
+    for (size_t idx : loc) {
+        while (start < idx) {
+            substr += str[start];
+            start++;
             }
-            if (is_delimiter || i == s.length()) {
-                size_t word_len = i - start;
-                if (word_len > 0) {
-                    count++;
-                }
-                start = i + delimiter_len;
-                if (is_delimiter) {
-                    i += delimiter_len - 1;
-                }
-            }
+        start = idx + 1;
+        out_words.push_back(substr);
         }
-        cout << "Cleaned string: " << s << " " << "count: " << count  << " " << 
-        "delimiter_len: "<< delimiter_len << endl;
-
-        out_words = new string[count];
         return count;
-        
 }
 
 } // namespace nmr

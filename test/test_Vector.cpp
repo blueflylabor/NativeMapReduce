@@ -58,6 +58,17 @@ int main() {
     assert(v5.isEmpty() && "Test 7 failed: Clear not working");
     std::cout << "Test 7 (Clear Method) - PASSED" << std::endl;
 
+    nmr::Vector<size_t> v6;
+    v6.push_back(5);
+    v6.push_back(6);
+    v6.push_back(7);
+    for (size_t val : v6)
+        std::cout << val << " ";
+    std::cout << std::endl;
+
+    for (nmr::Vector<size_t>::iterator it = v6.begin(); it != v6.end(); ++it)
+        std::cout << *it << " ";
+
     std::cout << "\n✅ All Vector tests passed successfully!" << std::endl;
     return 0;
 }

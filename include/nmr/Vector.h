@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstddef> // for size_t
+#include <iterator> // for std::iterator_traits
 
 namespace nmr {
 
@@ -17,6 +18,7 @@ namespace nmr {
  * - Move semantics (zero-copy resource transfer)
  * - Bounds checking (throws exceptions instead of exit)
  * - Support for const/non-const element access
+ * - Standard-compliant iterators (support range-based for loops)
  */
 template <typename T>
 class Vector {
@@ -26,142 +28,403 @@ private:
 
 public:
     // ------------------------------
-    // Constructors & Destructor
+    // Iterator Definitions (C++ Standard Compliant)
     // ------------------------------
     /**
-     * @brief Default constructor: empty vector
+     * @brief Non-const iterator for Vector
      */
+    class iterator {
+    private:
+        T* ptr; // Pointer to current element
+    public:
+        // Iterator traits (for STL compatibility)
+        using iterator_category = std::random_access_iterator_tag;
+        using value_type = T;
+        using difference_type = std::ptrdiff_t;
+        using pointer = T*;
+        using reference = T&;
+
+        /**
+         * @brief Constructor: initialize with pointer
+         */
+        explicit iterator(T* p = nullptr) : ptr(p) {}
+
+        /**
+         * @brief Dereference operator: access element
+         */
+        reference operator*() const { return *ptr; }
+
+        /**
+         * @brief Arrow operator: access member of element
+         */
+        pointer operator->() const { return ptr; }
+
+        /**
+         * @brief Pre-increment: move to next element
+         */
+        iterator& operator++() {
+            ++ptr;
+            return *this;
+        }
+
+        /**
+         * @brief Post-increment: move to next element (return old value)
+         */
+        iterator operator++(int) {
+            iterator temp = *this;
+            ++ptr;
+            return temp;
+        }
+
+        /**
+         * @brief Pre-decrement: move to previous element
+         */
+        iterator& operator--() {
+            --ptr;
+            return *this;
+        }
+
+        /**
+         * @brief Post-decrement: move to previous element (return old value)
+         */
+        iterator operator--(int) {
+            iterator temp = *this;
+            --ptr;
+            return temp;
+        }
+
+        /**
+         * @brief Addition operator: move forward by n elements
+         */
+        iterator operator+(difference_type n) const {
+            return iterator(ptr + n);
+        }
+
+        /**
+         * @brief Subtraction operator: move backward by n elements
+         */
+        iterator operator-(difference_type n) const {
+            return iterator(ptr - n);
+        }
+
+        /**
+         * @brief Difference operator: get distance between two iterators
+         */
+        difference_type operator-(const iterator& other) const {
+            return ptr - other.ptr;
+        }
+
+        /**
+         * @brief Compound assignment: move forward by n elements
+         */
+        iterator& operator+=(difference_type n) {
+            ptr += n;
+            return *this;
+        }
+
+        /**
+         * @brief Compound assignment: move backward by n elements
+         */
+        iterator& operator-=(difference_type n) {
+            ptr -= n;
+            return *this;
+        }
+
+        /**
+         * @brief Subscript operator: access element at offset
+         */
+        reference operator[](difference_type n) const {
+            return *(ptr + n);
+        }
+
+        /**
+         * @brief Equality comparison
+         */
+        bool operator==(const iterator& other) const {
+            return ptr == other.ptr;
+        }
+
+        /**
+         * @brief Inequality comparison
+         */
+        bool operator!=(const iterator& other) const {
+            return ptr != other.ptr;
+        }
+
+        /**
+         * @brief Less than comparison
+         */
+        bool operator<(const iterator& other) const {
+            return ptr < other.ptr;
+        }
+
+        /**
+         * @brief Greater than comparison
+         */
+        bool operator>(const iterator& other) const {
+            return ptr > other.ptr;
+        }
+
+        /**
+         * @brief Less than or equal comparison
+         */
+        bool operator<=(const iterator& other) const {
+            return ptr <= other.ptr;
+        }
+
+        /**
+         * @brief Greater than or equal comparison
+         */
+        bool operator>=(const iterator& other) const {
+            return ptr >= other.ptr;
+        }
+    };
+
+    /**
+     * @brief Const iterator for Vector (read-only access)
+     */
+    class const_iterator {
+    private:
+        const T* ptr; // Const pointer to current element
+    public:
+        // Iterator traits (for STL compatibility)
+        using iterator_category = std::random_access_iterator_tag;
+        using value_type = T;
+        using difference_type = std::ptrdiff_t;
+        using pointer = const T*;
+        using reference = const T&;
+
+        /**
+         * @brief Constructor: initialize with const pointer
+         */
+        explicit const_iterator(const T* p = nullptr) : ptr(p) {}
+
+        /**
+         * @brief Conversion from non-const iterator to const iterator
+         */
+        const_iterator(const iterator& it) : ptr(it.operator->()) {}
+
+        /**
+         * @brief Dereference operator: read-only access to element
+         */
+        reference operator*() const { return *ptr; }
+
+        /**
+         * @brief Arrow operator: read-only access to member of element
+         */
+        pointer operator->() const { return ptr; }
+
+        /**
+         * @brief Pre-increment: move to next element
+         */
+        const_iterator& operator++() {
+            ++ptr;
+            return *this;
+        }
+
+        /**
+         * @brief Post-increment: move to next element (return old value)
+         */
+        const_iterator operator++(int) {
+            const_iterator temp = *this;
+            ++ptr;
+            return temp;
+        }
+
+        /**
+         * @brief Pre-decrement: move to previous element
+         */
+        const_iterator& operator--() {
+            --ptr;
+            return *this;
+        }
+
+        /**
+         * @brief Post-decrement: move to previous element (return old value)
+         */
+        const_iterator operator--(int) {
+            const_iterator temp = *this;
+            --ptr;
+            return temp;
+        }
+
+        /**
+         * @brief Addition operator: move forward by n elements
+         */
+        const_iterator operator+(difference_type n) const {
+            return const_iterator(ptr + n);
+        }
+
+        /**
+         * @brief Subtraction operator: move backward by n elements
+         */
+        const_iterator operator-(difference_type n) const {
+            return const_iterator(ptr - n);
+        }
+
+        /**
+         * @brief Difference operator: get distance between two iterators
+         */
+        difference_type operator-(const const_iterator& other) const {
+            return ptr - other.ptr;
+        }
+
+        /**
+         * @brief Compound assignment: move forward by n elements
+         */
+        const_iterator& operator+=(difference_type n) {
+            ptr += n;
+            return *this;
+        }
+
+        /**
+         * @brief Compound assignment: move backward by n elements
+         */
+        const_iterator& operator-=(difference_type n) {
+            ptr -= n;
+            return *this;
+        }
+
+        /**
+         * @brief Subscript operator: read-only access to element at offset
+         */
+        reference operator[](difference_type n) const {
+            return *(ptr + n);
+        }
+
+        /**
+         * @brief Equality comparison
+         */
+        bool operator==(const const_iterator& other) const {
+            return ptr == other.ptr;
+        }
+
+        /**
+         * @brief Inequality comparison
+         */
+        bool operator!=(const const_iterator& other) const {
+            return ptr != other.ptr;
+        }
+
+        /**
+         * @brief Less than comparison
+         */
+        bool operator<(const const_iterator& other) const {
+            return ptr < other.ptr;
+        }
+
+        /**
+         * @brief Greater than comparison
+         */
+        bool operator>(const const_iterator& other) const {
+            return ptr > other.ptr;
+        }
+
+        /**
+         * @brief Less than or equal comparison
+         */
+        bool operator<=(const const_iterator& other) const {
+            return ptr <= other.ptr;
+        }
+
+        /**
+         * @brief Greater than or equal comparison
+         */
+        bool operator>=(const const_iterator& other) const {
+            return ptr >= other.ptr;
+        }
+    };
+
+    // ------------------------------
+    // Iterator Access Methods
+    // ------------------------------
+    /**
+     * @brief Get iterator to the first element
+     */
+    iterator begin() noexcept {
+        return iterator(data);
+    }
+
+    /**
+     * @brief Get const iterator to the first element
+     */
+    const_iterator begin() const noexcept {
+        return const_iterator(data);
+    }
+
+    /**
+     * @brief Get const iterator to the first element (explicit const version)
+     */
+    const_iterator cbegin() const noexcept {
+        return const_iterator(data);
+    }
+
+    /**
+     * @brief Get iterator to the element past the last element
+     */
+    iterator end() noexcept {
+        return iterator(data + size);
+    }
+
+    /**
+     * @brief Get const iterator to the element past the last element
+     */
+    const_iterator end() const noexcept {
+        return const_iterator(data + size);
+    }
+
+    /**
+     * @brief Get const iterator to the element past the last element (explicit const version)
+     */
+    const_iterator cend() const noexcept {
+        return const_iterator(data + size);
+    }
+
+    // ------------------------------
+    // Constructors & Destructor (保持原有代码不变)
+    // ------------------------------
     Vector() noexcept : data(nullptr), size(0) {}
-
-    /**
-     * @brief Parameterized constructor: vector with specified size
-     * @param s Initial size of the vector
-     * @note Elements are value-initialized (zero for numeric types)
-     */
     explicit Vector(size_t s);
-
-    /**
-     * @brief Constructor from C-style array
-     * @param arr Source C-style array
-     * @param arr_size Size of the source array
-     */
     Vector(const T* arr, size_t arr_size);
-
-    /**
-     * @brief Copy constructor: deep copy
-     * @param other Vector to copy from
-     */
     Vector(const Vector& other);
-
-    /**
-     * @brief Move constructor: transfer ownership (no copy)
-     * @param other Rvalue reference to source vector
-     */
     Vector(Vector&& other) noexcept;
-
-    /**
-     * @brief Destructor: release dynamic memory
-     */
     ~Vector() noexcept;
 
     // ------------------------------
-    // Assignment Operators
+    // Assignment Operators (保持原有代码不变)
     // ------------------------------
-    /**
-     * @brief Copy assignment operator: deep copy
-     * @param other Vector to assign from
-     * @return Reference to this vector
-     */
     Vector& operator=(const Vector& other);
-
-    /**
-     * @brief Move assignment operator: transfer ownership
-     * @param other Rvalue reference to source vector
-     * @return Reference to this vector
-     */
     Vector& operator=(Vector&& other) noexcept;
 
     // ------------------------------
-    // Element Access
+    // Element Access (保持原有代码不变)
     // ------------------------------
-    /**
-     * @brief Non-const subscript operator: modifiable access
-     * @param index Position of element to access
-     * @return Reference to element at index
-     * @throw std::out_of_range If index >= size
-     */
     T& operator[](size_t index);
-
-    /**
-     * @brief Const subscript operator: read-only access
-     * @param index Position of element to access
-     * @return Const reference to element at index
-     * @throw std::out_of_range If index >= size
-     */
     const T& operator[](size_t index) const;
-
-    /**
-     * @brief Safe element access (with bounds check)
-     * @param index Position of element to access
-     * @return Reference to element at index
-     * @throw std::out_of_range If index >= size
-     */
     T& at(size_t index);
-
-    /**
-     * @brief Const safe element access (with bounds check)
-     * @param index Position of element to access
-     * @return Const reference to element at index
-     * @throw std::out_of_range If index >= size
-     */
     const T& at(size_t index) const;
 
     // ------------------------------
-    // Capacity & Data Access
+    // Capacity & Data Access (保持原有代码不变)
     // ------------------------------
-    /**
-     * @brief Get current number of elements
-     * @return Current size of the vector
-     */
     size_t getSize() const noexcept { return size; }
-
-    /**
-     * @brief Check if vector is empty
-     * @return true if empty, false otherwise
-     */
     bool isEmpty() const noexcept { return size == 0; }
-
-    /**
-     * @brief Get pointer to underlying data array
-     * @return Raw pointer to data (const)
-     */
     const T* getData() const noexcept { return data; }
 
     // ------------------------------
-    // Modifiers
+    // Modifiers (保持原有代码不变)
     // ------------------------------
-    /**
-     * @brief Add element to the end of the vector (dynamic resize)
-     * @param value Element to add
-     */
     void push_back(const T& value);
-
-    /**
-     * @brief Clear all elements (release memory)
-     */
     void clear() noexcept;
 
     // ------------------------------
-    // Utility
+    // Utility (保持原有代码不变)
     // ------------------------------
-    /**
-     * @brief Print all elements to console (space-separated)
-     */
     void show() const;
 };
 
 // ------------------------------
-// Template Implementation (must be in header for template class)
+// Template Implementation (保持原有代码不变，仅补充迭代器相关无修改)
 // ------------------------------
 
 // Parameterized constructor
@@ -171,7 +434,6 @@ Vector<T>::Vector(size_t s) : size(s) {
         data = nullptr;
         return;
     }
-    // Value-initialize elements (zero for numeric types)
     data = new T[s]();
 }
 
@@ -204,7 +466,6 @@ Vector<T>::Vector(const Vector& other) : size(other.size) {
 // Move constructor
 template <typename T>
 Vector<T>::Vector(Vector&& other) noexcept : data(other.data), size(other.size) {
-    // Nullify source to avoid double deletion
     other.data = nullptr;
     other.size = 0;
 }
@@ -220,49 +481,33 @@ Vector<T>::~Vector() noexcept {
 // Copy assignment operator
 template <typename T>
 Vector<T>& Vector<T>::operator=(const Vector& other) {
-    // Self-assignment check
     if (this == &other) {
         return *this;
     }
-
-    // Release current memory
     delete[] data;
-
-    // Copy state from other
     size = other.size;
     if (other.size == 0) {
         data = nullptr;
         return *this;
     }
-
-    // Allocate new memory and copy elements
     data = new T[other.size];
     for (size_t i = 0; i < other.size; ++i) {
         data[i] = other.data[i];
     }
-
     return *this;
 }
 
 // Move assignment operator
 template <typename T>
 Vector<T>& Vector<T>::operator=(Vector&& other) noexcept {
-    // Self-assignment check
     if (this == &other) {
         return *this;
     }
-
-    // Release current memory
     delete[] data;
-
-    // Transfer ownership
     data = other.data;
     size = other.size;
-
-    // Nullify source
     other.data = nullptr;
     other.size = 0;
-
     return *this;
 }
 
@@ -287,30 +532,23 @@ const T& Vector<T>::operator[](size_t index) const {
 // Safe at() method (non-const)
 template <typename T>
 T& Vector<T>::at(size_t index) {
-    return operator[](index); // Reuse bounds check logic
+    return operator[](index);
 }
 
 // Safe at() method (const)
 template <typename T>
 const T& Vector<T>::at(size_t index) const {
-    return operator[](index); // Reuse bounds check logic
+    return operator[](index);
 }
 
 // Push back (dynamic resize)
 template <typename T>
 void Vector<T>::push_back(const T& value) {
-    // Allocate new array with size + 1
     T* new_data = new T[size + 1];
-
-    // Copy existing elements
     for (size_t i = 0; i < size; ++i) {
         new_data[i] = data[i];
     }
-
-    // Add new element
     new_data[size] = value;
-
-    // Release old memory and update
     delete[] data;
     data = new_data;
     size++;

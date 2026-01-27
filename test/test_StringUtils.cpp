@@ -37,25 +37,18 @@ int main() {
     assert(result4 == "Hello World C++" && "Mixed punctuation removal failed");
     cout << "Test 4 (Mixed Punctuation): PASSED\n";
     cout << "Result: \"" << result4 << "\"\n";
-    
-    string test5 = "one,two,three,four";
-    string* out_words = nullptr;
-    nmr::StringUtils::splitToStringArray(test5, ",", out_words);
-    /***
-    assert(out_words != nullptr && "Output words array is null");
-    assert(out_words[0] == "one" && "First word incorrect");
-    assert(out_words[1] == "two" && "Second word incorrect");
-    assert(out_words[2] == "three" && "Third word incorrect");
-    assert(out_words[3] == "four" && "Fourth word incorrect");
-    cout << "Test 5 (String Split): PASSED\n";
-    cout << "Result: [\"" << out_words[0] << "\", \"" << out_words[1] << "\", \"" << out_words[2] << "\", \"" << out_words[3] << "\"]\n";
-    delete[] out_words;
 
-    cout << "\nAll StringUtils tests passed successfully!\n";
-    ***/
+    string test5 = "hello world,cpp.best language!";
+    Vector<size_t> loc = nmr::StringUtils::getDelimiterLocation(test5, " !,.");
+    for (size_t idx : loc)
+        cout << "[" << test5[idx] << "]" << ",";
+    cout << "\n";
 
-    string test6 = "hello,world.cpp!";
-    Vector<size_t> v = nmr::StringUtils::getDelimiterLocation(test6, " !,.");
-    v.show();
+    string test6 = "hello world,cpp.best language!";
+    nmr::Vector<string> substr;
+    size_t count  = nmr::StringUtils::splitToStringArray(test6, " !,", substr);
+    for (const string& str : substr)
+        cout << "[" << str << "]" << ",";
+    cout << "count: " << count << "\n";
     return 0;
 }
