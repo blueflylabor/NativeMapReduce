@@ -59,6 +59,24 @@ namespace nmr {
             return data[index].value;
         }
 
+        V& operator[](const K& key) {
+            int index = findIndex(key);
+            if (index == -1)
+                return data[index].value;
+            if (size == capacity) {
+                capacity *= 2;
+                Pair<K,V>* newData = new Pair<K,V>[capacity];
+                for (size_t i = 0; i < size; ++i)
+                    newData[i] = data[i];
+                delete[] data;
+                data = newData;
+            }
+            data[index].key = key;
+            data[size].value = V();
+            size++;
+            return data[size - 1].value;
+        }
+
         Map(Map&& other) noexcept : data(other.data), size(other.size), capacity(other.capacity) {
             other.data = nullptr;
             other.capacity = 0;

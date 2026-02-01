@@ -24,14 +24,29 @@ namespace nmr {
 
     class WordCountMapper : public Mapper<int, std::string, std::string, int> {
         public:
-        void map(const int& lineNum, const string& line, nmr::Map<string, Vector<int>>& intermediate) override {
+        void map(const int&, const string& line, nmr::Map<string, Vector<int>>& intermediate) override {
             std::string cleanLine = nmr::StringUtils::removePunctuation(line);
             nmr::Vector<std::string> words;
             nmr::StringUtils::splitToStringArray(cleanLine, " ", words);
             for (size_t i = 0; i < words.getSize(); ++i)
                 intermediate[words[i]].push_back(1);
         }
+
     };
+
+    class WordCountReducer : public Reducer<std::string, int, int> {
+    public:
+        int reduce(const std::string&, const nmr::Vector<int>& values) override {
+            int sum = 0;
+            for (size_t i = 0; i < values.getSize(); ++i) {
+                sum += values[i];
+            }
+            return sum;
+        }
+    };
+
+
+
 }
 
 #endif
